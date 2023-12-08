@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val btnPlus = findViewById<Button>(R.id.btn_plus)
+        val btnMinus = findViewById<Button>(R.id.btn_minus)
         val firstNumber = findViewById<EditText>(R.id.et_firstNumber)
         val secondNumber = findViewById<EditText>(R.id.et_secondNumber)
         tvResult = findViewById(R.id.tv_result)
@@ -23,10 +24,21 @@ class MainActivity : AppCompatActivity() {
             val num2 = secondNumber.text.toString().toIntOrNull() ?: 0
             addition(num1, num2)
         }
+
+        btnMinus.setOnClickListener {
+            val num1 = firstNumber.text.toString().toIntOrNull() ?: 0
+            val num2 = secondNumber.text.toString().toIntOrNull() ?: 0
+            subtraction(num1,num2)
+        }
     }
 
     private fun addition(first: Int, second: Int) {
         val added = first + second
+        tvResult.text = added.toString()
+    }
+
+    private fun subtraction(first: Int, second: Int) {
+        val added = first - second
         tvResult.text = added.toString()
     }
 }
