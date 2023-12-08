@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         val btnPlus = findViewById<Button>(R.id.btn_plus)
         val btnMinus = findViewById<Button>(R.id.btn_minus)
         val btnMulti = findViewById<Button>(R.id.btn_multi)
+        val btnDiv = findViewById<Button>(R.id.btn_divi)
         val firstNumber = findViewById<EditText>(R.id.et_firstNumber)
         val secondNumber = findViewById<EditText>(R.id.et_secondNumber)
         tvResult = findViewById(R.id.tv_result)
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
             val num2 = secondNumber.text.toString().toIntOrNull() ?: 0
             multi(num1,num2)
         }
+
+        btnDiv.setOnClickListener {
+            val num1 = firstNumber.text.toString().toIntOrNull() ?: 0
+            val num2 = secondNumber.text.toString().toIntOrNull() ?: 0
+            div(num1,num2)
+        }
+
     }
 
     private fun addition(first: Int, second: Int) {
@@ -53,6 +61,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun multi(first: Int, second: Int) {
         val added = first * second
+        tvResult.text = added.toString()
+    }
+
+    private fun div(first: Int, second: Int) {
+        val added = first / second
         tvResult.text = added.toString()
     }
 
